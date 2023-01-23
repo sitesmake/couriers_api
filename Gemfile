@@ -35,3 +35,7 @@ group :development do
   gem 'bullet', '~> 7.0', '>= 7.0.7'
   gem 'bundler-audit', '~> 0.9.1'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
+end
