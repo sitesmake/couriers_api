@@ -28,3 +28,10 @@ group :development do
   # gem "spring"
 end
 
+group :development do
+  gem 'rubocop', '~> 1.42'
+  gem 'rubocop-rails', '~> 2.17', '>= 2.17.4'
+  gem 'standard', '~> 1.22', '>= 1.22.1'
+  gem 'bullet', '~> 7.0', '>= 7.0.7'
+  gem 'bundler-audit', '~> 0.9.1'
+end
