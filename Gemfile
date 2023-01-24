@@ -31,13 +31,14 @@ end
 group :development do
   gem 'rubocop', '~> 1.42'
   gem 'rubocop-rails', '~> 2.17', '>= 2.17.4'
-  gem 'simplecov', '~> 0.22.0'
   gem 'standard', '~> 1.22', '>= 1.22.1'
   gem 'bullet', '~> 7.0', '>= 7.0.7'
   gem 'bundler-audit', '~> 0.9.1'
 end
 
+gem 'simplecov', '~> 0.22.0', require: false, group: :test
+
 group :development, :test do
   gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
-  gem 'factory_bot', '~> 6.2', '>= 6.2.1'
+  gem 'factory_bot_rails', '~> 6.2'
 end
