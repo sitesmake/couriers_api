@@ -2,7 +2,7 @@
 
 ### Ruby version
 
-* Ruby 3.1.2
+* Ruby 3.1.0
 * Rails 7.0.4.1
 
 ## Linters (code analyzers)
