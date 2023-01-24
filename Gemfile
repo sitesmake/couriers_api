@@ -35,3 +35,10 @@ group :development do
   gem 'bullet', '~> 7.0', '>= 7.0.7'
   gem 'bundler-audit', '~> 0.9.1'
 end
+
+gem 'simplecov', '~> 0.22.0', require: false, group: :test
+
+group :development, :test do
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
+  gem 'factory_bot_rails', '~> 6.2'
+end
