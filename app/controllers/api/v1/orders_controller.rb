@@ -1,11 +1,15 @@
-class Api::V1::OrdersController < ApplicationController
-  def create
-    Order.create(order_params)
-  end
+module Api
+  module V1
+    class OrdersController < ApplicationController
+      def create
+        Order.create(order_params)
+      end
 
-  private
+      private
 
-  def order_params
-    params.require(:order).permit(:from_point, :from_address, :to_point, :to_address, :comment, :phone)
+      def order_params
+        params.require(:order).permit(:from_point, :from_address, :to_point, :to_address, :comment, :phone)
+      end
+    end
   end
 end
