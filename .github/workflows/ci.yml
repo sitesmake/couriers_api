@@ -9,16 +9,43 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
       - uses: actions/checkout@v3
+      
       - name: Set up Ruby
         uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
         with:
           ruby-version: '3.1'
           bundler-cache: true
+      
+      - name: Install PostgreSQL Client
+        run: |
+          sudo apt-get -yqq install libpq-dev          
+      
       - name: Install dependencies
         run: bundle install
+      
       - name: rubocop
         run: bundle exec rubocop
-      - name: rspec
-        run: bundle exec rspec
+      
+      - name: Build and test with rspec
+        env:
+          RAILS_ENV: test
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DATABASE: couriers_api_test
+          POSTGRES_PORT: 5432
+        run: |
+          bundle exec rails db:setup
+          bundle exec rspec
